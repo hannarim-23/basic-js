@@ -14,6 +14,7 @@ function getEmailDomain(email) {
   let n = email.lastIndexOf('@');
   let str = email.slice(n+1);
 
+  
   return str;
 }
 
