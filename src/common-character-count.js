@@ -13,44 +13,23 @@ const { NotImplementedError } = require('../extensions/index.js');
  */
 
  function getCommonCharacterCount( s1, s2 ) {
-  let mas1 = [], mas2 = [], num = 0;
+  let num = 0, s3 = s2;
   console.log('------------');
 
   if (s1 == '' || s2 == '') return 0;
 
-  for(let i=0; i < s1.length; i++){
-    if (mas1.includes(s1[i])) {
-      mas1.push(s1[i]);
-    }
-  }
-
-  for(let i=0; i < s2.length; i++){
-    if (!mas2.includes(s2[i])) {
-      mas2.push(s2[i]);
-    }
-  }
-  console.log(mas2);
-  
-
-    for(let i=0; i < mas1.length; i++){
-      for(let j=0; j < mas2.length; j++){
-        if (mas1[i] == mas2[j]){
+  firstFor:for (let i = 0; i < s1.length; i++){
+    for (let j = 0; j < s3.length; j++){
+      if(s1[i] == s3[j]){
         num++;
-        console.log(num);
-        
-        }
+        s3 = s3.slice(0,j) + s3.slice(j+1);
+        continue firstFor;
       }
-    }
-
-
+  }
+}
   console.log(num);
   return num;
 }
-
-/*
-
-
-*/
 
 module.exports = {
   getCommonCharacterCount
